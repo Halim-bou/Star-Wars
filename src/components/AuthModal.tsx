@@ -3,56 +3,57 @@ import { Mail, Lock, X } from 'lucide-react';
 import { api } from '../lib/api';
 
 interface AuthModalProps {
-	isOpen: boolean;
-	onClose: () => void;
-	onAuthSuccess: () => void;
+  isOpen: boolean;
+  onClose: () => void;
+  onAuthSuccess: () => void;
 }
 
 export default function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
-	const [authLoading, setAuthLoading] = useState(false);
-	const [authError, setAuthError] = useState<string | null>(null);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [authLoading, setAuthLoading] = useState(false);
+  const [authError, setAuthError] = useState<string | null>(null);
 
-	const handleSignIn = async (e: React.FormEvent) => {
-		e.preventDefault();
-		setAuthLoading(true);
-		setAuthError(null);
+  const handleSignIn = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setAuthLoading(true);
+    setAuthError(null);
 
-		try {
-			await api.login(email, password);
-			setEmail('');
-			setPassword('');
-			onAuthSuccess();
-			onClose();
-		} catch (error) {
-			setAuthError(error instanceof Error ? error.message : 'Failed to sign in');
-		} finally {
-			setAuthLoading(false);
-		}
-	};
+    try {
+      await api.login(email, password);
+      setEmail('');
+      setPassword('');
+      onAuthSuccess();
+      onClose();
+    } catch (error) {
+      setAuthError(error instanceof Error ? error.message : 'Failed to sign in');
+    } finally {
+      setAuthLoading(false);
+    }
+  };
 
-	const handleSignUp = async () => {
-		setAuthLoading(true);
-		setAuthError(null);
+  const handleSignUp = async () => {
+    setAuthLoading(true);
+    setAuthError(null);
 
-		try {
-			await api.register(email, password);
-			await api.login(email, password);
-			setEmail('');
-			setPassword('');
-			onAuthSuccess();
-			onClose();
-		} catch (error) {
-			setAuthError(error instanceof Error ? error.message : 'Failed to sign up');
-		} finally {
-			setAuthLoading(false);
-		}
-	};
-	if (!isOpen) return null;
+    try {
+      await api.register(email, password);
+      await api.login(email, password);
+      setEmail('');
+      setPassword('');
+      onAuthSuccess();
+      onClose();
+    } catch (error) {
+      setAuthError(error instanceof Error ? error.message : 'Failed to sign up');
+    } finally {
+      setAuthLoading(false);
+    }
+  };
 
-	return (
-		<div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50">
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50">
       <div className="bg-gray-900 rounded-lg p-6 max-w-md w-full relative">
         <button
           onClick={onClose}
@@ -124,5 +125,5 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalP
         </form>
       </div>
     </div>
-	);
+  );
 }

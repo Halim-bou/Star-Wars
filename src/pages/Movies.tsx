@@ -17,12 +17,12 @@ interface MovieWithPoster extends Movie {
 }
 
 const moviePosters: Record<string, string> = {
-  'A New Hope': 'https://images.unsplash.com/photo-1608889825205-eebdb9fc5806?auto=format&fit=crop&q=80',
-  'The Empire Strikes Back': 'https://images.unsplash.com/photo-1608889773923-7514b2b89636?auto=format&fit=crop&q=80',
-  'Return of the Jedi': 'https://images.unsplash.com/photo-1608889825271-9d8012d88032?auto=format&fit=crop&q=80',
-  'The Phantom Menace': 'https://images.unsplash.com/photo-1608889825205-eebdb9fc5806?auto=format&fit=crop&q=80',
-  'Attack of the Clones': 'https://images.unsplash.com/photo-1608889773923-7514b2b89636?auto=format&fit=crop&q=80',
-  'Revenge of the Sith': 'https://images.unsplash.com/photo-1608889825271-9d8012d88032?auto=format&fit=crop&q=80'
+  'A New Hope': 'https://images.unsplash.com/photo-1608889825205-eebdb9fc5806?auto=format&fit=crop&q=80'
+  // 'The Empire Strikes Back': 'https://images.unsplash.com/photo-1608889773923-7514b2b89636?auto=format&fit=crop&q=80',
+  // 'Return of the Jedi': 'https://images.unsplash.com/photo-1608889825271-9d8012d88032?auto=format&fit=crop&q=80',
+  // 'The Phantom Menace': 'https://images.unsplash.com/photo-1608889825205-eebdb9fc5806?auto=format&fit=crop&q=80',
+  // 'Attack of the Clones': 'https://images.unsplash.com/photo-1608889773923-7514b2b89636?auto=format&fit=crop&q=80',
+  // 'Revenge of the Sith': 'https://images.unsplash.com/photo-1608889825271-9d8012d88032?auto=format&fit=crop&q=80'
 };
 
 function Movies() {
@@ -38,7 +38,7 @@ function Movies() {
         const data = await response.json();
         const moviesWithPosters = data.results.map((movie: Movie) => ({
           ...movie,
-          posterUrl: moviePosters[movie.title] || 'https://images.unsplash.com/photo-1472457897821-70d3819a0e24?auto=format&fit=crop&q=80'
+          posterUrl: moviePosters[movie.title] || 'https://images.unsplash.com/photo-1608889825205-eebdb9fc5806?auto=format&fit=crop&q=80'
         }));
         setMovies(moviesWithPosters.sort((a: Movie, b: Movie) => a.episode_id - b.episode_id));
         setLoading(false);
