@@ -1,12 +1,13 @@
 import React from 'react';
-
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <>
-      <h1>star-wars-explorer</h1>
-    </>
+    <Router>
+      <div className='min-h-screen flex flex-col bg-black text-gray-100'>
+        
+      </div>
+    </Router>
   )
 }
 
