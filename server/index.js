@@ -1,11 +1,10 @@
 import express from 'express';
 import cors from 'cors';
-import cookieParsr from 'cookie-parser';
+import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import mariadb from 'mariadb';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
