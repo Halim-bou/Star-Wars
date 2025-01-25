@@ -70,7 +70,7 @@ app.post('/api/auth/register', async (req, res) => {
     res.status(201).json({ message: 'User created successfully' });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: '' });
+    res.status(500).json({ message: 'server error' });
   }
 });
 
@@ -136,7 +136,7 @@ app.get('/api/comments/:contentType/:contentId', async (req, res) => {
     res.json(comments);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: '' });
+    res.status(500).json({ message: 'server error' });
   }
 });
 
@@ -163,7 +163,7 @@ app.post('/api/comments', authenticateToken, async (req, res) => {
     res.json(comments);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: '' });
+    res.status(500).json({ message: 'server error' });
   }
 });
 
