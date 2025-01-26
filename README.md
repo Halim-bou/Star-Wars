@@ -66,8 +66,12 @@ Star-Wars-Explorer is a dynamic and interactive web application for Star Wars en
 
    - In the main folder, create a `.env` file with the following content:
      ```env
-     DB_USER_NAME=your_db_username
-     DB_PASSWORD=your_db_password
+     PORT=3000
+     DB_HOST=localhost
+     DB_USER=YOUR_USER_DB
+     DB_PASSWORD=*********
+     DB_NAME=star_wars
+     JWT_SECRET=your-secret-key
      ```
 
 5. Start the development server:
